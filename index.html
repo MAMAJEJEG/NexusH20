@@ -199,6 +199,14 @@
                 </div>
             </div>
             
+            <button id="viewProductBtn" style="background: transparent; border: 1px solid var(--teal); color: var(--teal); padding: 0.6rem 1.2rem; border-radius: 5px; cursor: pointer; margin-top: 1rem; font-weight: 600; transition: 0.3s;">
+                View Nexus H2O System
+            </button>
+
+            <div id="productImageContainer" style="display: none; margin-top: 2rem; border-radius: 15px; overflow: hidden; border: 1px solid rgba(100, 255, 218, 0.2); box-shadow: 0 0 20px rgba(100, 255, 218, 0.1);">
+                <img src="NexusH20.jpg" alt="Nexus H2O Technology" style="width: 100%; display: block;">
+            </div>
+
             <p style="font-size: 0.9rem; border-left: 2px solid var(--orange-pulse); padding-left: 1rem;">
                 <i>"The graphene pulse technology ensures your filter stays clean forever."</i>
             </p>
@@ -206,18 +214,18 @@
 
         <div class="order-box">
             <h2>Pre-order Now</h2>
-            <form id="preorderForm">
+            <form action="https://formspree.io/f/mbdzwdwj" method="POST" id="preorderForm">
                 <div class="form-group">
                     <label>FULL NAME</label>
-                    <input type="text" placeholder="Felix Willemin" required>
+                    <input type="text" name="name" placeholder="Felix Willemin" required>
                 </div>
                 <div class="form-group">
                     <label>EMAIL ADDRESS</label>
-                    <input type="email" placeholder="contact@nexush2o.eu" required>
+                    <input type="email" name="email" placeholder="contact@nexush2o.eu" required>
                 </div>
                 <div class="form-group">
                     <label>SELECT MODEL</label>
-                    <select>
+                    <select name="model">
                         <option>Nexus Home (Central System)</option>
                         <option>Infinite Shower Kit</option>
                         <option>Dishwasher Closed-Loop</option>
@@ -226,11 +234,11 @@
                 <div class="form-group" style="display: flex; gap: 10px;">
                     <div style="flex: 2;">
                         <label>COUNTRY</label>
-                        <input type="text" placeholder="France">
+                        <input type="text" name="country" placeholder="France">
                     </div>
                     <div style="flex: 1;">
                         <label>UNITS</label>
-                        <input type="number" value="1" min="1">
+                        <input type="number" name="units" value="1" min="1">
                     </div>
                 </div>
                 <button type="submit" class="btn-order">Secure my Nexus</button>
@@ -246,10 +254,28 @@
     </div>
 
     <script>
-        document.getElementById('preorderForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Congratulations! You are now on the priority list for Nexus H2O. One of our specialists will contact you soon.');
+        // document.getElementById('preorderForm').addEventListener('submit', function(e) {
+        //     e.preventDefault();
+        //     alert('Congratulations! You are now on the priority list for Nexus H2O. One of our specialists will contact you soon.');
+        // });
+
+
+        // Gestion de l'affichage de la photo
+        const viewBtn = document.getElementById('viewProductBtn');
+        const imgContainer = document.getElementById('productImageContainer');
+
+        viewBtn.addEventListener('click', function() {
+            if (imgContainer.style.display === 'none') {
+                imgContainer.style.display = 'block';
+                viewBtn.textContent = 'Hide Product';
+                // Petit effet de scroll fluide vers l'image
+                imgContainer.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                imgContainer.style.display = 'none';
+                viewBtn.textContent = 'View Nexus H2O System';
+            }
         });
+
     </script>
 </body>
 </html>
